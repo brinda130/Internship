@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Novamed Doctor Registration</title>
+    <link rel="icon" href="hos.png" type="image/x-icon">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            color: #1f2937;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .page-split {
+            display: flex;
+            width: 90%;
+            max-width: 1000px;
+            min-height: 720px;
+            background: transparent;
+            overflow: hidden;
+            gap: 0;
+        }
+
+        .image-panel {
+            width: 45%;
+            background: #e8eef6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            border-radius: 20px 0 0 20px;
+            overflow: hidden;
+        }
+
+        .image-panel img {
+            width: 100%;
+            height: auto;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .registration-card {
+            width: 55%;
+            background: #ffffff;
+            border-radius: 0 20px 20px 0;
+            padding: 40px 44px;
+            box-shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .registration-card h3 {
+            margin: 0 0 28px;
+            font-size: 24px;
+            text-align: center;
+            color: #111827;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px 14px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="password"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #d1d5db;
+            border-radius: 0;
+            background: #f8fafc;
+            color: #111827;
+            font-size: 14px;
+        }
+
+        select {
+            appearance: none;
+            background-image: linear-gradient(45deg, transparent 50%, #6b7280 50%),
+                linear-gradient(135deg, #6b7280 50%, transparent 50%);
+            background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px);
+            background-size: 5px 5px, 5px 5px;
+            background-repeat: no-repeat;
+        }
+
+        .days-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .days-list label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 12px;
+            background: #f8fafc;
+            font-size: 13px;
+            color: #374151;
+            cursor: pointer;
+        }
+
+        .days-list input {
+            margin: 0;
+            accent-color: #2563eb;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px 16px;
+            margin-top: 8px;
+            border: none;
+            border-radius: 14px;
+            background: #2563eb;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .login-link {
+            margin-top: 18px;
+            text-align: center;
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        .login-link a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 900px) {
+            .page-split {
+                flex-direction: column;
+                width: 100%;
+                min-height: auto;
+            }
+
+            .image-panel,
+            .registration-card {
+                width: 100%;
+            }
+
+            .image-panel {
+                min-height: 280px;
+                padding: 24px;
+            }
+
+            .registration-card {
+                border-radius: 0 0 20px 20px;
+                padding: 28px 24px;
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .registration-card {
+                border-radius: 18px;
+                padding: 24px 20px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-split">
+        <div class="image-panel">
+            <img src="docs.png" alt="Doctor Illustration">
+        </div>
+        <div class="registration-card">
+            <h3>Doctor Registration</h3>
+            <form action="doc_reg.html">
+                <div class="form-grid">
+                    <div class="form-group full">
+                        <label for="full-name">Full Name *</label>
+                        <input id="full-name" type="text" name="doctor_name" placeholder="Enter full name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input id="email" type="email" name="email" placeholder="Enter email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone *</label>
+                        <input id="phone" type="tel" name="phone" placeholder="Enter phone number" required>
+                    </div>
+
+                    <div class="form-group full">
+                        <label for="specialization">Specialization</label>
+                        <select id="specialization" name="specialization" required>
+                            <option value="">Select specialization</option>
+                            <option>Cardiology</option>
+                            <option>Neurology</option>
+                            <option>Orthopedics</option>
+                            <option>Dermatology</option>
+                            <option>Pediatrics</option>
+                            <option>ENT</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="qualification">Qualification</label>
+                        <input id="qualification" type="text" name="qualification" placeholder="e.g. MBBS, MD" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="experience">Experience (years)</label>
+                        <input id="experience" type="number" name="experience" placeholder="e.g. 5" required>
+                    </div>
+
+                    <div class="form-group full">
+                        <label for="fee">Consultation Fee (₹)</label>
+                        <input id="fee" type="text" name="fee" placeholder="e.g. 800" required>
+                    </div>
+
+                    <div class="form-group full">
+                        <label>Available Days</label>
+                        <div class="days-list">
+                            <label><input type="checkbox" name="day" value="Mon"> Mon</label>
+                            <label><input type="checkbox" name="day" value="Tue"> Tue</label>
+                            <label><input type="checkbox" name="day" value="Wed"> Wed</label>
+                            <label><input type="checkbox" name="day" value="Thu"> Thu</label>
+                            <label><input type="checkbox" name="day" value="Fri"> Fri</label>
+                            <label><input type="checkbox" name="day" value="Sat"> Sat</label>
+                            <label><input type="checkbox" name="day" value="Sun"> Sun</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group full">
+                        <label for="timing">Available Timing</label>
+                        <input id="timing" type="text" name="timing" placeholder="e.g. 9:00 AM - 5:00 PM" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+            <div class="login-link">
+                Already registered? <a href="login.html">Login</a>
+            </div>
+        </div>
+</body>
+
+</html>

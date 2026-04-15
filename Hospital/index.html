@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="icon" href="hos.png" type="image/x-icon">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovaMed Hospital</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: #f4f6f9;
+            color: #333;
+        }
+
+        h1,
+        h2,
+        h3 {
+            margin: 0;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 5%;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 14px 35px rgba(0, 0, 0, 0.12);
+            position: sticky;
+            top: 0;
+            z-index: 30;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        nav h2 {
+            color: #0d4f8c;
+            margin: 0;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav ul li {
+            cursor: pointer;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: color 0.2s ease, transform 0.2s ease;
+            display: inline-block;
+        }
+
+        nav ul li a:hover {
+            color: #0d4f8c;
+            transform: scale(1.05);
+        }
+
+        nav ul li a:active {
+            transform: scale(1);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            padding: 40px 5% 80px;
+            min-height: 620px;
+            background: url('8496.jpg') center center / cover no-repeat;
+        }
+
+        .hero-text {
+            max-width: 40%;
+            padding: 0;
+            margin-top: -10px;
+        }
+
+        .hero-text h1 {
+            font-size: 40px;
+            color: #0d4f8c;
+        }
+
+        .hero-text p {
+            margin: 15px 0;
+            max-width: 520px;
+            font-size: 25px;
+        }
+
+        .btn {
+            background: #0d4f8c;
+            color: white;
+            padding: 20px 24px;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+
+
+        /* ===== SERVICES ===== */
+        .services {
+            text-align: center;
+            padding: 80px 5%;
+        }
+
+        .services h2,
+        .doctors h2,
+        .testimonials h2,
+        .section-header h2 {
+            margin-bottom: 30px;
+            color: black;
+            font-size: 40px;
+            font-weight: 700;
+        }
+
+        .services h2 span,
+        .doctors h2 span,
+        .testimonials h2 span,
+        .section-header h2 span {
+            color: #0d4f8c;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .service-grid .card {
+            min-height: 240px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border: 2px solid rgba(13, 79, 140, 0.18);
+            border-radius: 20px;
+            box-shadow: 0 12px 30px rgba(13, 79, 140, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-grid .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 38px rgba(13, 79, 140, 0.12);
+        }
+
+        .service-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 55px;
+            height: 55px;
+            margin-bottom: 20px;
+            border-radius: 50%;
+            background: #0d4f8c;
+            color: white;
+            font-size: 24px;
+        }
+
+        .service-grid h2 {
+            margin-bottom: 50px;
+            font-size: 36px;
+            font-weight: 700;
+            color: #030303;
+        }
+
+        .service-grid h2 span {
+            color: #0d4f8c;
+        }
+
+        .service-grid .card h3 {
+            color: #0d4f8c;
+            font-size: 25px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            margin-top: 0;
+        }
+
+        .service-grid .card p {
+            color: #666;
+            font-size: 20px;
+            line-height: 1.65;
+            margin: 0 0 12px 0;
+        }
+
+        /* ===== ABOUT ===== */
+        .about {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            padding: 80px 5%;
+        }
+
+        .about img {
+            width: 70%;
+            border-radius: 20px;
+            margin: 0;
+            padding: 0;
+            object-fit: cover;
+        }
+
+        .about-text {
+            flex: 1;
+            padding-right: 60px;
+        }
+
+        .about-text h3 {
+            color: #0d4f8c;
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .about-text h2 {
+            font-size: 40px;
+            color: #333;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .about-text p {
+            font-size: 20px;
+            line-height: 1.3;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .about-text .btn {
+            background: #0d4f8c;
+            font-weight: 600;
+        }
+
+        /* ===== DOCTORS ===== */
+        .doctors {
+            text-align: center;
+            padding: 80px 5%;
+        }
+
+
+        .doctor-slider {
+            position: relative;
+            margin-top: 40px;
+        }
+
+        .doctor-grid {
+            display: flex;
+            gap: 30px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .doctor-grid::-webkit-scrollbar {
+            display: none;
+        }
+
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: white;
+            border: 1px solid rgba(13, 79, 140, 0.2);
+            color: #0d4f8c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+            z-index: 10;
+        }
+
+        .slider-arrow.left {
+            left: -20px;
+        }
+
+        .slider-arrow.right {
+            right: -20px;
+        }
+
+        .slider-arrow:hover {
+            background: #0d4f8c;
+            color: white;
+            border-color: #0d4f8c;
+        }
+
+        .doctor {
+            min-width: 300px;
+            flex: 0 0 300px;
+            scroll-snap-align: start;
+            padding: 20px !important;
+            background: white !important;
+            border: 3px solid #0d4f8c;
+            border-radius: 16px;
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .doctor img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            object-position: top center;
+            border-radius: 14px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .doctor h3 {
+            padding: 0;
+            margin: 0 0 8px 0;
+            color: #333;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .doctor-title {
+            color: #0d4f8c;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .doctor-social {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        .doctor-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 2px solid #0d4f8c;
+            color: #0d4f8c;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .doctor-social a:hover {
+            background: #0d4f8c;
+            color: white;
+        }
+
+        /* ===== FORM ===== */
+        .booking {
+            padding: 80px 5%;
+        }
+
+        .booking-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .section-header {
+            max-width: 900px;
+            margin: 0 auto 40px;
+            text-align: center;
+        }
+
+        .section-header h2 {
+            font-size: 40px;
+            color: #333;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .section-header h2 span {
+            color: #0d4f8c;
+        }
+
+        .booking-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .booking-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+        }
+
+        .booking-form {
+            flex: 1;
+            background: white;
+            border: 3px solid #0d4f8c;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .booking-form h3 {
+            color: #333;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #333;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .booking-form input,
+        .booking-form select {
+            width: 100%;
+            padding: 14px 15px;
+            border: 2px solid #0d4f8c;
+            border-radius: 6px;
+            font-size: 15px;
+            font-family: 'Segoe UI', sans-serif;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+            color: #333;
+        }
+
+        .booking-form input::placeholder,
+        .booking-form select {
+            color: #999;
+        }
+
+        .booking-form input:focus,
+        .booking-form select:focus {
+            outline: none;
+            border-color: #0d4f8c;
+            box-shadow: 0 0 0 3px rgba(13, 79, 140, 0.12);
+        }
+
+        .booking-form select {
+            cursor: pointer;
+            background: white;
+        }
+
+        .booking-form button {
+            width: 100%;
+            padding: 14px;
+            background: white;
+            color: #0d4f8c;
+            border: 2px solid #0d4f8c;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .booking-form button:hover {
+            background: #0d4f8c;
+            color: white;
+        }
+
+        .registration-section {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+
+        .registration-section p {
+            color: #666;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .register-link {
+            color: #0d4f8c;
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+
+        .register-link:hover {
+            color: #0a3a63;
+            text-decoration: underline;
+        }
+
+        /* ===== TESTIMONIAL ===== */
+        .testimonials {
+            text-align: center;
+            padding: 80px 5%;
+        }
+
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .testimonial {
+            background: white;
+            border: 2px solid #0d4f8c;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial:hover {
+            transform: translateY(-5px);
+        }
+
+        .testimonial-header {
+            background: #0d4f8c;
+            padding: 30px 20px 40px 20px;
+            position: relative;
+            border-radius: 0 0 50px 50px;
+            clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
+        }
+
+        .testimonial-profile {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            border: 4px solid white;
+            overflow: hidden;
+            background: white;
+        }
+
+        .testimonial-profile img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .testimonial-name {
+            color: white;
+            font-size: 20px;
+            font-weight: 700;
+            margin: 10px 0 8px 0;
+        }
+
+        .testimonial-rating {
+            color: #ffc107;
+            font-size: 18px;
+            letter-spacing: 2px;
+        }
+
+        .testimonial-text {
+            padding: 30px 25px;
+            color: #666;
+            font-size: 15px;
+            line-height: 1.6;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #0d4f8c;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        /* RESPONSIVE */
+        @media(max-width: 768px) {
+
+            .service-grid,
+            .doctor-grid,
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero,
+            .about,
+            .booking {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .booking-form {
+                padding: 30px;
+            }
+
+            .booking-form h3 {
+                font-size: 24px;
+            }
+
+            .about {
+                gap: 30px;
+            }
+
+            .about img {
+                width: 100%;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .card {
+                width: 100%;
+                margin: auto;
+            }
+
+            .service-grid .card {
+                min-height: 120px;
+            }
+
+            .doctor img {
+                max-height: 250px;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .doctors h2 {
+                font-size: 28px;
+            }
+
+            .about-text h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo">
+            <img src="hos.png" alt="NovaMed Hospital Logo">
+            <h2>NovaMed</h2>
+        </div>
+        <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#doctors">Doctors</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="login.html">Sign Up</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="hero-text">
+            <h1>Stay Safe, Stay Healthy</h1>
+            <p>Providing trusted healthcare services with modern facilities and expert doctors.</p>
+            <button class="btn">Contact Us</button>
+        </div>
+    </section>
+
+
+
+    <!-- ABOUT -->
+    <section class="about">
+        <div>
+            <img src="docteam2.png" alt="Healthcare Team" />
+        </div>
+        <div class="about-text">
+            <h3>About Us</h3>
+            <h2>We Take Care Of Your Healthy Life</h2>
+            <p>NovaMed is a trusted health center dedicated to providing compassionate care and advanced medical
+                support.</p>
+            <p>Our team combines modern technology with experienced professionals to make every visit comfortable and
+                efficient.</p>
+            <p>We focus on preventive care, immediate treatment, and ongoing follow-up so patients receive the best
+                possible outcomes.</p>
+            <button class="btn">Learn More →</button>
+        </div>
+    </section>
+
+    <!-- DOCTORS -->
+    <section class="doctors" id="doctors">
+        <h2>OUR <span>DOCTORS</span></h2>
+        <div class="doctor-slider">
+            <button class="slider-arrow left" aria-label="Scroll left">‹</button>
+            <div class="doctor-grid">
+                <div class="card doctor">
+                    <img src="doc4.png" alt="Dr. Priya Sharma">
+                    <h3>Dr. Priya Sharma</h3>
+                    <div class="doctor-title">Pediatrician</div>
+                    <div class="doctor-social">
+                        <a href="#" title="Facebook">f</a>
+                        <a href="#" title="Twitter">𝕏</a>
+                        <a href="#" title="LinkedIn">in</a>
+                    </div>
+                </div>
+                <div class="card doctor">
+                    <img src="doc2.png" alt="Dr. Arjun Mehta">
+                    <h3>Dr. Arjun Mehta</h3>
+                    <div class="doctor-title">Cardiologist</div>
+                    <div class="doctor-social">
+                        <a href="#" title="Facebook">f</a>
+                        <a href="#" title="Twitter">𝕏</a>
+                        <a href="#" title="LinkedIn">in</a>
+                    </div>
+                </div>
+                <div class="card doctor">
+                    <img src="doc3.png" alt="Dr. Neha Reddy">
+                    <h3>Dr. Neha Reddy</h3>
+                    <div class="doctor-title">ENT Specialist</div>
+                    <div class="doctor-social">
+                        <a href="#" title="Facebook">f</a>
+                        <a href="#" title="Twitter">𝕏</a>
+                        <a href="#" title="LinkedIn">in</a>
+                    </div>
+                </div>
+                <div class="card doctor">
+                    <img src="doc6.png" alt="Dr. Rajesh Gupta">
+                    <h3>Dr. Rajesh Gupta</h3>
+                    <div class="doctor-title">Neurologist</div>
+                    <div class="doctor-social">
+                        <a href="#" title="Facebook">f</a>
+                        <a href="#" title="Twitter">𝕏</a>
+                        <a href="#" title="LinkedIn">in</a>
+                    </div>
+                </div>
+                <div class="card doctor">
+                    <img src="doc8.png" alt="Dr. Aarti Singh">
+                    <h3>Dr. Aarti Singh</h3>
+                    <div class="doctor-title">Orthopedic Surgeon</div>
+                    <div class="doctor-social">
+                        <a href="#" title="Facebook">f</a>
+                        <a href="#" title="Twitter">𝕏</a>
+                        <a href="#" title="LinkedIn">in</a>
+                    </div>
+                </div>
+                <div class="card doctor">
+                    <img src="doc7.png" alt="Dr. Karan Verma">
+                    <h3>Dr. Karan Verma</h3>
+                    <div class="doctor-title">General Physician</div>
+                    <div class="doctor-social">
+                        <a href="#" title="Facebook">f</a>
+                        <a href="#" title="Twitter">𝕏</a>
+                        <a href="#" title="LinkedIn">in</a>
+                    </div>
+                </div>
+            </div>
+            <button class="slider-arrow right" aria-label="Scroll right">›</button>
+        </div>
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="doctors.html"
+                style="display: inline-block; background: #0d4f8c; color: white; padding: 14px 32px; border-radius: 6px; font-weight: 700; text-decoration: none; transition: all 0.3s ease; font-size: 16px;"
+                onmouseover="this.style.background='#0a3a63'" onmouseout="this.style.background='#0d4f8c'">View All
+                Doctors →</a>
+        </div>
+    </section>
+
+    <!-- BOOKING -->
+    <section class="booking" id="contact">
+        <div class="section-header">
+            <h2>BOOK <span>NOW</span></h2>
+        </div>
+        <div class="booking-content">
+            <div class="booking-image">
+                <img src="bookapp.png" alt="Doctor Booking" />
+            </div>
+            <div class="booking-form">
+                <h3>Book Appointment</h3>
+                <form id="form">
+                    <div class="form-group">
+                        <label for="doctor">Select Doctor</label>
+                        <select id="doctor" name="doctor" required onchange="updateSpecialization()">
+                            <option value="">-- Select a Doctor --</option>
+                            <option value="dr-priya">Dr. Priya Sharma - Pediatrician</option>
+                            <option value="dr-arjun">Dr. Arjun Mehta - Cardiologist</option>
+                            <option value="dr-neha">Dr. Neha Reddy - ENT Specialist</option>
+                            <option value="dr-rajesh">Dr. Rajesh Gupta - Neurologist</option>
+                            <option value="dr-aarti">Dr. Aarti Singh - Orthopedic Surgeon</option>
+                            <option value="dr-karan">Dr. Karan Verma - General Physician</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="specialization">Specialization</label>
+                        <input type="text" id="specialization" name="specialization" placeholder="Auto-filled" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="date">Select Date</label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="slot">Available Slot</label>
+                        <select id="slot" name="slot" required>
+                            <option value="">-- Select a Slot --</option>
+                            <option value="9:00 AM">9:00 AM</option>
+                            <option value="10:00 AM">10:00 AM</option>
+                            <option value="11:00 AM">11:00 AM</option>
+                            <option value="2:00 PM">2:00 PM</option>
+                            <option value="3:00 PM">3:00 PM</option>
+                            <option value="4:00 PM">4:00 PM</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="patient-name">Patient Name</label>
+                        <input type="text" id="patient-name" name="patient-name" placeholder="Your name" required>
+                    </div>
+
+                    <button type="submit" class="btn" onclick="window.location.href='login.html'; return false;">Book
+                        Appointment</button>
+                </form>
+                <div class="registration-section">
+                    <p>New patient? <a href="patient_reg.html" class="register-link">Register as a new patient</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services container" id="services">
+        <h2>OUR <span>SERVICES</span></h2>
+        <div class="service-grid">
+            <div class="card">
+                <h3>Free Checkups</h3>
+                <p>Health screenings for adults and children help detect concerns early.</p>
+                <p>Our team offers friendly, fast examinations with guidance on next steps.</p>
+            </div>
+            <div class="card">
+                <h3>24/7 Ambulance</h3>
+                <p>Emergency transport is available around the clock for urgent medical needs.</p>
+                <p>Each ambulance is fully equipped and staffed by trained professionals.</p>
+            </div>
+            <div class="card">
+                <h3>Expert Doctors</h3>
+                <p>Experienced specialists are available in multiple fields, including cardiology and orthopedics.</p>
+                <p>They provide personalized consultations and clear treatment plans.</p>
+            </div>
+            <div class="card">
+                <h3>Medicines</h3>
+                <p>Our on-site pharmacy stocks trusted medicines for faster patient support.</p>
+                <p>We make it easy to get the right prescription with expert guidance.</p>
+            </div>
+            <div class="card">
+                <h3>Bed Facility</h3>
+                <p>Comfortable rooms and attentive nursing care help patients rest and recover.</p>
+                <p>We offer clean, safe accommodations with support available 24/7.</p>
+            </div>
+            <div class="card">
+                <h3>Total Care</h3>
+                <p>From checkups to recovery, we manage every step of your health journey.</p>
+                <p>Our staff ensures smooth coordination across diagnosis, treatment and follow-up.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIAL -->
+    <section class="testimonials">
+        <h2>CLIENT'S <span>REVIEW</span></h2>
+        <div class="testimonials-grid">
+            <div class="testimonial">
+                <div class="testimonial-header">
+                    <div class="testimonial-profile">
+                        <img src="p2.png" alt="Aarav Sharma">
+                    </div>
+                    <h3 class="testimonial-name">Aarav Sharma</h3>
+                    <div class="testimonial-rating">★★★★☆</div>
+                </div>
+                <div class="testimonial-text">
+                    The doctors at NovaMed were very attentive and the appointment process was smooth. I felt
+                    well-informed at every step, and the care team followed up after my visit.
+                </div>
+            </div>
+            <div class="testimonial">
+                <div class="testimonial-header">
+                    <div class="testimonial-profile">
+                        <img src="p1.png" alt="Priya Patel">
+                    </div>
+                    <h3 class="testimonial-name">Priya Patel</h3>
+                    <div class="testimonial-rating">★★★★☆</div>
+                </div>
+                <div class="testimonial-text">
+                    Excellent service and very friendly staff. The specialist explained my condition clearly and the
+                    clinic felt clean and safe. Highly recommended for families.
+                </div>
+            </div>
+            <div class="testimonial">
+                <div class="testimonial-header">
+                    <div class="testimonial-profile">
+                        <img src="p3.png" alt="Rohan Kumar">
+                    </div>
+                    <h3 class="testimonial-name">Rohan Kumar</h3>
+                    <div class="testimonial-rating">★★★★☆</div>
+                </div>
+                <div class="testimonial-text">
+                    NovaMed offered fast service with a warm welcome. The doctor was very professional and gave great
+                    advice for my treatment, making the visit comfortable and reassuring.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 NovaMed Hospital. All rights reserved.</p>
+    </footer>
+
+    <!-- JS -->
+    <script>
+        // Specialization mapping for doctors
+        const doctorSpecialization = {
+            'dr-priya': 'Pediatrician',
+            'dr-arjun': 'Cardiologist',
+            'dr-neha': 'ENT Specialist',
+            'dr-rajesh': 'Neurologist',
+            'dr-aarti': 'Orthopedic Surgeon',
+            'dr-karan': 'Dermatologist'
+        };
+
+        // Update specialization when doctor is selected
+        function updateSpecialization() {
+            const doctorSelect = document.getElementById('doctor');
+            const specializationInput = document.getElementById('specialization');
+            const selectedValue = doctorSelect.value;
+
+            if (selectedValue && doctorSpecialization[selectedValue]) {
+                specializationInput.value = doctorSpecialization[selectedValue];
+            } else {
+                specializationInput.value = '';
+            }
+        }
+
+        // Handle form submission
+        document.getElementById("form").addEventListener("submit", function (e) {
+            e.preventDefault();
+            const doctor = document.getElementById('doctor').value;
+            const date = document.getElementById('date').value;
+            const slot = document.getElementById('slot').value;
+            const patientName = document.getElementById('patient-name').value;
+
+            if (doctor && date && slot && patientName) {
+                alert(`Appointment booked successfully!\n\nDoctor: ${doctor}\nDate: ${date}\nSlot: ${slot}\nPatient: ${patientName}`);
+            } else {
+                alert("Please fill all required fields!");
+            }
+        });
+
+        const doctorGrid = document.querySelector('.doctor-grid');
+        const leftArrow = document.querySelector('.slider-arrow.left');
+        const rightArrow = document.querySelector('.slider-arrow.right');
+        const scrollAmount = 320;
+
+        if (leftArrow && rightArrow && doctorGrid) {
+            leftArrow.addEventListener('click', () => {
+                doctorGrid.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            });
+
+            rightArrow.addEventListener('click', () => {
+                doctorGrid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            });
+        }
+    </script>
+
+</body>
+
+</html>

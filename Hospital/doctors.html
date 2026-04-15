@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Doctors - NovaMed Hospital</title>
+    <link rel="icon" href="hos.png" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f4f6f9;
+            color: #333;
+        }
+
+        /* NAVBAR */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 5%;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 14px 35px rgba(0, 0, 0, 0.12);
+            position: sticky;
+            top: 0;
+            z-index: 30;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        nav h2 {
+            color: #0d4f8c;
+            margin: 0;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: color 0.2s ease;
+        }
+
+        nav ul li a:hover {
+            color: #0d4f8c;
+        }
+
+        /* PAGE HEADER */
+        .page-header {
+            background: linear-gradient(135deg, #0d4f8c 0%, #0a3a63 100%);
+            color: white;
+            padding: 40px 5%;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        /* SEARCH BAR */
+        .search-section {
+            background: white;
+            padding: 30px 5%;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 15px;
+            transition: border 0.3s ease;
+        }
+
+        .search-bar input:focus {
+            outline: none;
+            border-color: #0d4f8c;
+            box-shadow: 0 0 8px rgba(13, 79, 140, 0.2);
+        }
+
+        .search-bar button {
+            padding: 12px 24px;
+            background: #0d4f8c;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: background 0.3s ease;
+        }
+
+        .search-bar button:hover {
+            background: #0a3a63;
+        }
+
+        /* MAIN CONTENT */
+        .doctors-container {
+            display: flex;
+            gap: 30px;
+            padding: 40px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* SIDEBAR FILTERS */
+        .filters-sidebar {
+            width: 280px;
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .filter-section {
+            margin-bottom: 30px;
+        }
+
+        .filter-section h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #0d4f8c;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .filter-section.active .filter-content {
+            display: block;
+        }
+
+        .filter-content {
+            display: block;
+        }
+
+        .filter-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .filter-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #0d4f8c;
+        }
+
+        .filter-item label {
+            cursor: pointer;
+            font-size: 14px;
+            color: #555;
+            flex: 1;
+        }
+
+        .filter-item label:hover {
+            color: #0d4f8c;
+        }
+
+        .clear-filters {
+            background: #f0f0f0;
+            border: none;
+            color: #0d4f8c;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 700;
+            width: 100%;
+            transition: background 0.3s ease;
+        }
+
+        .clear-filters:hover {
+            background: #e0e0e0;
+        }
+
+        /* DOCTORS GRID */
+        .doctors-grid {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .doctor-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .doctor-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .doctor-image {
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+            background: #e8f0f7;
+        }
+
+        .doctor-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        .doctor-info {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .doctor-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0d4f8c;
+            margin-bottom: 5px;
+        }
+
+        .doctor-specialization {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .doctor-experience {
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 8px;
+        }
+
+        .doctor-location {
+            font-size: 13px;
+            color: #0d4f8c;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 15px;
+        }
+
+        .doctor-location::before {
+            content: "📍";
+        }
+
+        .doctor-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+        }
+
+        .btn-book {
+            flex: 1;
+            padding: 11px;
+            background: #ffc107;
+            color: #333;
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .btn-book:hover {
+            background: #ffb300;
+            transform: scale(1.02);
+        }
+
+        .btn-call {
+            flex: 1;
+            padding: 11px;
+            background: white;
+            color: #0d4f8c;
+            border: 2px solid #0d4f8c;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .btn-call:hover {
+            background: #0d4f8c;
+            color: white;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .doctors-container {
+                flex-direction: column;
+            }
+
+            .filters-sidebar {
+                width: 100%;
+                position: static;
+            }
+
+            .doctors-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 28px;
+            }
+
+            .search-bar {
+                flex-direction: column;
+            }
+
+            .search-bar input,
+            .search-bar button {
+                width: 100%;
+            }
+
+            .doctors-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                gap: 10px;
+            }
+
+            nav ul li a {
+                padding: 6px 8px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo">
+            <img src="hos.png" alt="NovaMed Logo">
+            <h2>NovaMed Hospital</h2>
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="doctors.html" style="color: #0d4f8c;">Doctors</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="patient_reg.html">Register</a></li>
+        </ul>
+    </nav>
+
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+        <h1>Meet Our Experts</h1>
+        <p>Choose from our highly qualified and experienced doctors</p>
+    </div>
+
+    <!-- SEARCH SECTION -->
+    <div class="search-section">
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search for doctors by name or specialization...">
+            <button onclick="searchDoctors()">Search</button>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="doctors-container">
+        <!-- SIDEBAR FILTERS -->
+        <aside class="filters-sidebar">
+            <h3 style="margin-bottom: 20px; color: #333; font-size: 18px;">Filters</h3>
+
+            <!-- SPECIALIZATION FILTER -->
+            <div class="filter-section active">
+                <h3>Specialization ▼</h3>
+                <div class="filter-content">
+                    <div class="filter-item">
+                        <input type="checkbox" id="pediatrician" value="Pediatrician" onchange="filterDoctors()">
+                        <label for="pediatrician">Pediatrician</label>
+                    </div>
+                    <div class="filter-item">
+                        <input type="checkbox" id="cardiologist" value="Cardiologist" onchange="filterDoctors()">
+                        <label for="cardiologist">Cardiologist</label>
+                    </div>
+                    <div class="filter-item">
+                        <input type="checkbox" id="ent" value="ENT Specialist" onchange="filterDoctors()">
+                        <label for="ent">ENT Specialist</label>
+                    </div>
+                    <div class="filter-item">
+                        <input type="checkbox" id="neurologist" value="Neurologist" onchange="filterDoctors()">
+                        <label for="neurologist">Neurologist</label>
+                    </div>
+                    <div class="filter-item">
+                        <input type="checkbox" id="orthopedic" value="Orthopedic Surgeon" onchange="filterDoctors()">
+                        <label for="orthopedic">Orthopedic Surgeon</label>
+                    </div>
+                    <div class="filter-item">
+                        <input type="checkbox" id="general" value="General Physician" onchange="filterDoctors()">
+                        <label for="general">General Physician</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CITY FILTER -->
+            <div class="filter-section active">
+                <h3>City ▼</h3>
+                <div class="filter-content">
+                    <div class="filter-item">
+                        <input type="checkbox" id="delhi" value="Delhi" onchange="filterDoctors()">
+                        <label for="delhi">Delhi</label>
+                    </div>
+                    <div class="filter-item">
+                        <input type="checkbox" id="bangalore" value="Bangalore" onchange="filterDoctors()">
+                        <label for="bangalore">Bangalore</label>
+                    </div>
+                    <div class="filter-item">
+                        <input type="checkbox" id="mumbai" value="Mumbai" onchange="filterDoctors()">
+                        <label for="mumbai">Mumbai</label>
+                    </div>
+                    <div class="filter-item">
+                        <input type="checkbox" id="hyderabad" value="Hyderabad" onchange="filterDoctors()">
+                        <label for="hyderabad">Hyderabad</label>
+                    </div>
+                </div>
+            </div>
+
+            <button class="clear-filters" onclick="clearFilters()">Clear All Filters</button>
+        </aside>
+
+        <!-- DOCTORS GRID -->
+        <div class="doctors-grid" id="doctorsGrid">
+            <!-- Doctor cards will be populated by JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        // Doctor data
+        const doctors = [
+            {
+                id: 1,
+                name: "Dr. Priya Sharma",
+                specialization: "Pediatrician",
+                experience: "15+ Years",
+                city: "Delhi",
+                image: "doc4.png"
+            },
+            {
+                id: 2,
+                name: "Dr. Arjun Mehta",
+                specialization: "Cardiologist",
+                experience: "18+ Years",
+                city: "Mumbai",
+                image: "doc2.png"
+            },
+            {
+                id: 3,
+                name: "Dr. Neha Reddy",
+                specialization: "ENT Specialist",
+                experience: "12+ Years",
+                city: "Bangalore",
+                image: "doc3.png"
+            },
+            {
+                id: 4,
+                name: "Dr. Rajesh Gupta",
+                specialization: "Neurologist",
+                experience: "20+ Years",
+                city: "Delhi",
+                image: "doc6.png"
+            },
+            {
+                id: 5,
+                name: "Dr. Aarti Singh",
+                specialization: "Orthopedic Surgeon",
+                experience: "16+ Years",
+                city: "Bangalore",
+                image: "doc8.png"
+            },
+            {
+                id: 6,
+                name: "Dr. Karan Verma",
+                specialization: "General Physician",
+                experience: "14+ Years",
+                city: "Hyderabad",
+                image: "doc7.png"
+            },
+            {
+                id: 7,
+                name: "Dr. Ananya Patel",
+                specialization: "Cardiologist",
+                experience: "7+ Years",
+                city: "Mumbai",
+                image: "doc11.png"
+            },
+            {
+                id: 8,
+                name: "Dr. Vikram Singh",
+                specialization: "Pediatrician",
+                experience: "13+ Years",
+                city: "Delhi",
+                image: "doc15.png"
+            },
+            {
+                id: 9,
+                name: "Dr. Sanjana Desai",
+                specialization: "General Physician",
+                experience: "9+ Years",
+                city: "Bangalore",
+                image: "doc13.png"
+            },
+            {
+                id: 10,
+                name: "Dr. Rohan Kapoor",
+                specialization: "ENT Specialist",
+                experience: "10+ Years",
+                city: "Hyderabad",
+                image: "doc14.png"
+            }
+        ];
+
+        // Render doctors
+        function renderDoctors(doctorList) {
+            const grid = document.getElementById('doctorsGrid');
+            grid.innerHTML = '';
+
+            if (doctorList.length === 0) {
+                grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 40px; color: #999;">No doctors found matching your criteria.</p>';
+                return;
+            }
+
+            doctorList.forEach(doctor => {
+                const card = document.createElement('div');
+                card.className = 'doctor-card';
+                card.innerHTML = `
+                    <div class="doctor-image">
+                        <img src="${doctor.image}" alt="${doctor.name}">
+                    </div>
+                    <div class="doctor-info">
+                        <div class="doctor-name">${doctor.name}</div>
+                        <div class="doctor-specialization">${doctor.specialization}</div>
+                        <div class="doctor-experience">${doctor.experience}</div>
+                        <div class="doctor-location">${doctor.city}</div>
+                        <div class="doctor-actions">
+                            <a href="login.html" class="btn-book">Book Appointment→</a>
+                            <button class="btn-call">📞 Call Now</button>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Filter doctors
+        function filterDoctors() {
+            const selectedSpecializations = Array.from(document.querySelectorAll('.filters-sidebar .filter-section:nth-of-type(1) input:checked')).map(el => el.value);
+            const selectedCities = Array.from(document.querySelectorAll('.filters-sidebar .filter-section:nth-of-type(2) input:checked')).map(el => el.value);
+
+            let filtered = doctors;
+
+            if (selectedSpecializations.length > 0) {
+                filtered = filtered.filter(doc => selectedSpecializations.includes(doc.specialization));
+            }
+
+            if (selectedCities.length > 0) {
+                filtered = filtered.filter(doc => selectedCities.includes(doc.city));
+            }
+
+            renderDoctors(filtered);
+        }
+
+        // Search doctors
+        function searchDoctors() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = doctors.filter(doc =>
+                doc.name.toLowerCase().includes(searchTerm) ||
+                doc.specialization.toLowerCase().includes(searchTerm)
+            );
+            renderDoctors(filtered);
+        }
+
+        // Clear filters
+        function clearFilters() {
+            document.querySelectorAll('input[type="checkbox"]').forEach(el => el.checked = false);
+            document.getElementById('searchInput').value = '';
+            renderDoctors(doctors);
+        }
+
+        // Handle Enter key in search
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('searchInput').addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') searchDoctors();
+            });
+            renderDoctors(doctors);
+        });
+    </script>
+</body>
+
+</html>

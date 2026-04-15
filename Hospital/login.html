@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Novamed Hospital Login</title>
+    <link rel="icon" href="hos.png" type="image/x-icon">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #eef2f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .login-container {
+            display: flex;
+            width: 90%;
+            max-width: 920px;
+            min-height: 640px;
+            height: auto;
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .login-image {
+            width: 55%;
+            background: #f0f4f8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            overflow: hidden;
+        }
+
+        .login-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .login-box {
+            width: 45%;
+            max-width: 420px;
+            padding: 50px 36px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow-y: auto;
+            background: #ffffff;
+        }
+
+        .login-box h2 {
+            text-align: center;
+            margin: 0 0 32px;
+            color: #1e3c72;
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .input-box {
+            margin-bottom: 15px;
+        }
+
+        .input-box label {
+            font-size: 14px;
+            color: #333;
+        }
+
+        .input-box input,
+        .input-box select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .remember {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .remember input {
+            margin-right: 5px;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 10px;
+            background: #2a5298;
+            border: none;
+            color: white;
+            font-size: 15px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .login-btn:hover {
+            background: #1e3c72;
+        }
+
+        .links {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        .links a {
+            text-decoration: none;
+            color: #2a5298;
+            margin: 5px;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+
+        .register-buttons {
+            margin-top: 22px;
+            text-align: center;
+        }
+
+        .register-buttons p {
+            margin: 0 0 14px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .register-buttons .btn-row {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .register-buttons a {
+            display: inline-block;
+            padding: 10px 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.25s ease, transform 0.25s ease;
+        }
+
+        .register-buttons a.doctor-btn {
+            border: 2px solid #2a5298;
+            color: #2a5298;
+            background: transparent;
+        }
+
+        .register-buttons a.patient-btn {
+            background: #2a5298;
+            color: white;
+        }
+
+        .register-buttons a:hover {
+            transform: translateY(-2px);
+        }
+
+        .register-buttons a.doctor-btn:hover {
+            background: rgba(42, 82, 152, 0.08);
+        }
+
+        .register-buttons a.patient-btn:hover {
+            background: #1e3c72;
+        }
+
+        @media (max-width: 768px) {
+            .login-container {
+                flex-direction: column;
+                width: 100%;
+                max-width: 100%;
+                min-height: auto;
+            }
+
+            .login-image {
+                width: 100%;
+                min-height: 260px;
+                padding: 30px;
+            }
+
+            .login-box {
+                width: 100%;
+                max-width: 100%;
+                padding: 36px 24px;
+            }
+
+            .login-box h2 {
+                font-size: 22px;
+                margin-bottom: 24px;
+            }
+
+            .register-buttons .btn-row {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .register-buttons a {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-container">
+        <div class="login-image">
+            <img src="left1.png" alt="Hospital Vector Image">
+        </div>
+
+        <div class="login-box">
+            <h2>Novamed Hospital</h2>
+
+            <form action="dashboard.html">
+
+                <div class="input-box">
+                    <label>Email</label>
+                    <input type="email" placeholder="Enter Email" required>
+                </div>
+
+                <div class="input-box">
+                    <label>Password</label>
+                    <input type="password" placeholder="Enter Password" required>
+                </div>
+
+                <div class="input-box">
+                    <label>Role</label>
+                    <select required>
+                        <option value="">Select Role</option>
+                        <option>Admin</option>
+                        <option>Doctor</option>
+                        <option>Patient</option>
+                        <option>Pharmacist</option>
+                    </select>
+                </div>
+
+                <div class="remember">
+                    <input type="checkbox">
+                    <label>Remember Me</label>
+                </div>
+
+                <button type="submit" class="login-btn">Login</button>
+
+                <div class="links">
+                    <a href="forgot-password.html">Forgot Password?</a>
+                </div>
+            </form>
+
+            <div class="register-buttons">
+                <p>Don't have an account?</p>
+                <div class="btn-row">
+                    <a href="doc_reg.html" class="doctor-btn">Register as Doctor</a>
+                    <a href="patient_reg.html" class="patient-btn">Register as Patient</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
